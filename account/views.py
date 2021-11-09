@@ -45,7 +45,7 @@ def login_view(request):
                 login(request, user)
                 return redirect('employee')
             else:
-                msg= 'invalid credentials'
+                msg = 'invalid credentials'
         else:
             msg = 'error validating form'
 
@@ -54,8 +54,10 @@ def login_view(request):
 
 @login_required(login_url='/login_view/')
 def home(request):
-    return render(request, 'home.html')
-
+    if  request.user.is_admin:
+         return render(request, 'home.html')
+    else:
+        return redirect('login_view')
 def admin(request):
     return render(request, 'admin.html')
 
