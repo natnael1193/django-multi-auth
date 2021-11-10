@@ -1,11 +1,16 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="col-8 offset-3">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p}}
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    <span class="mb-0 text-muted">
+      {% if msg %} {{ msg | safe }} {% else %} Login page {% endif %}
+    </span>
+    <div class="col-8 offset-3">
+      <form method="post">
+        {% csrf_token %} {{ form.as_p}}
         <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
