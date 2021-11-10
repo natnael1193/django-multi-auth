@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 # Custom
     # 'core',
     'account',
-    'blog'
+    'blog',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -128,8 +129,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-# MEDIA_URL = '/images/'
+MEDIA_URL = '/images/'
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 AUTH_USER_MODEL = 'account.User'

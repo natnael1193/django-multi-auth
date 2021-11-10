@@ -57,6 +57,11 @@ def login_view(request):
     return render(request, 'auth/login.html', {'form': form, 'msg': msg})
 
 
+@login_required(login_url='/login_view/')
+def profile(request):
+    return render(request, 'auth/profile.html')
+
+
 def logout_view(request):
     logout(request)
     return redirect('login_view')
@@ -83,3 +88,6 @@ def customer(request):
 @login_required(login_url='/login_view/')
 def employee(request):
     return render(request, 'employee.html')
+
+def not_authenticated(request):
+    return render(request, 'auth/not_authenticated.html')

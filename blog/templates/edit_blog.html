@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+  <!-- <h3>Blog</h3> -->
+  <div class="container px-4 py-5" id="custom-cards">
+      <br>
+    <h2 class="pb-2 border-bottom">Edit Blog</h2>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{% for field in form.visible_fields %}  
+<div class="form-group p-2">
+  <lable for="{{ field.id_for_lable }}"> {{ field.lable }} </lable>
+  {{ field|add_class:'form-control' }}
+  {% for error in field.errors %}
+  <span class="help-block">{{ error }}</span>
+  {% endfor %}
+</div>
+
+{% endfor %}
+<button class="btn btn-primary" type="submit">Submit</button>
+</form>
+  </div>
+
+{% endblock content %}
